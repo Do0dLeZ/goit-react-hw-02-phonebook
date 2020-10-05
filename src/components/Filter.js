@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import propTypes from "prop-types";
 
 const Input = styled.input`
   margin-bottom: 15px;
@@ -22,3 +23,8 @@ export default function Filter({ value, onChange }) {
     </div>
   );
 }
+
+Filter.propTypes = {
+  value: propTypes.string.isRequired,
+  onChange: propTypes.objectOf(propTypes.func),
+};

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import shortID from "shortid";
+import propTypes from "prop-types";
+
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -92,10 +94,14 @@ export default class ContactForm extends Component {
           onChange={this.handleOnChange}
           name="number"
           id={idNumber}
-          placeholder='Enter phone number...'
+          placeholder="Enter phone number..."
         />
         <Button type="submit">Add contact</Button>
       </Form>
     );
   }
 }
+
+ContactForm.propTypes = {
+  onAddContact: propTypes.objectOf(propTypes.func).isRequired,
+};

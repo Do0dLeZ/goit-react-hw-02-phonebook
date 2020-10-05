@@ -33,19 +33,20 @@ export default class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const isUnique = !this.state.contacts.find(
+    const isUnique = !this.state.contacts.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (isUnique) {
       const newContact = createContact({ name, number });
-      this.setState((prevState) => {
+      return this.setState((prevState) => {
         return {
           contacts: [...prevState.contacts, newContact],
         };
       });
-    } else {
-      alert(`Contact with name: ${name} already exist... Enter another name`);
     }
+    return alert(
+      `Contact with name: ${name} already exist... Enter another name`
+    );
   };
 
   removeContact = (contactId) => {
